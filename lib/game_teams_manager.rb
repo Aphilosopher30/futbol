@@ -73,13 +73,13 @@ class GameTeamsManager
   end
 
   def winningest_coach(season_games)
-    data_list = select_season_games(season_games_ids)
+    season = select_season_games(season_games)
     coach_hash = all_coachs_records(season)
     coach_hash.key(coach_hash.values.max)
   end
 
   def worst_coach(season_games)
-    data_list = select_season_games(season_games_ids)
+    season = select_season_games(season_games)
     coach_hash = all_coachs_records(season)
     coach_hash.key(coach_hash.values.min)
   end
@@ -87,7 +87,7 @@ class GameTeamsManager
   def all_coachs_records(season)
     coach_key = Proc.new{|game_team| game_team.head_coach}
     result_value = Proc.new{|game_team| game_team.result}
-    coach_hash_win_list = create_hash_list(coach_key, result_value, data_list)
+    coach_hash_win_list = create_hash_list(coach_key, result_value, season)
     coach_hash_win_ratio = get_proportion_hash_list(coach_hash_win_list)
   end
 
