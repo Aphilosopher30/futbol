@@ -169,14 +169,14 @@ class GamesManager
     averages = hash_1.merge(hash_2) do |key, hash_1_value, hash_2_value|
       to_percent(hash_1_value, hash_2_value)
     end
-    (averages.min_by {|team_id, average| average})[0]
+    averages.min_by {|team_id, average| average}.first
   end
 
   def max_average_hash_values(hash_1, hash_2)
     averages = hash_1.merge(hash_2) do |key, hash_1_value, hash_2_value|
       to_percent(hash_1_value, hash_2_value)
     end
-    (averages.max_by {|team_id, average| average})[0]
+    averages.max_by {|team_id, average| average}.first
   end
 
   def to_percent(top, bottom)
