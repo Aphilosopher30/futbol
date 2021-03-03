@@ -253,4 +253,40 @@ class GameManagerTest < Minitest::Test
     game_manager = GamesManager.new(path)
     assert_equal "27", game_manager.lowest_scoring_visitor
   end
+
+  def test_sum_values
+    path = "./data/games.csv"
+    game_manager = GamesManager.new(path)
+
+    key_value_arr = [[1, 1], [2, 2]]
+    expected = {1 => 1, 2 => 2}
+
+    assert_equal expected, game_manager.sum_values(key_value_arr)
+  end
+
+  def test_min_max_average_hash
+    path = "./data/games.csv"
+    game_manager = GamesManager.new(path)
+
+
+    hash_1 = {"22"=>479,
+               "7"=>430,
+               "27"=>120,
+               "53"=>303}
+
+    hash_2 = {"22"=>236,
+               "7"=>229,
+               "27"=>65,
+               "53"=>164}
+
+    assert_equal "27", game_manager.min_max_average_hash(hash_1, hash_2, min = 0)
+    assert_equal "22", game_manager.min_max_average_hash(hash_1, hash_2, max = 1)
+  end
+
+  def test_get_percentage_rounded_hundreth
+    path = "./data/games.csv"
+    game_manager = GamesManager.new(path)
+
+    assert_equal 0.31, game_manager.get_percentage(5, 16)
+  end
 end
