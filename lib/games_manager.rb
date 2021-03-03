@@ -79,7 +79,7 @@ class GamesManager
   end
 
   def average_win_percentage(team_id)
-    wins = all = 0
+    wins = 0; all = 0
     get_season_results(team_id).each do |key, value|
       wins += value.count("WIN")
       all += value.count

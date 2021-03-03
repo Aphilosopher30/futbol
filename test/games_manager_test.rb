@@ -268,7 +268,6 @@ class GameManagerTest < Minitest::Test
     path = "./data/games.csv"
     game_manager = GamesManager.new(path)
 
-
     hash_1 = {"22"=>479,
                "7"=>430,
                "27"=>120,
