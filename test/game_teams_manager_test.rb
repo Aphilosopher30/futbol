@@ -47,6 +47,24 @@ class GameTeamsManagerTest < Minitest::Test
     assert_equal expected, game_team_manager.sum_values(key_value_arr)
   end
 
+  def test_most_tackles
+    path = "./fixture/game_teams_dummy15.csv"
+    game_team_manager = GameTeamsManager.new(path)
+
+    games_in_season = ['2012030221', '2012030222', '2012030223']
+
+    assert_equal "6", game_team_manager.most_tackles(games_in_season)
+  end
+
+  def test_fewest_tackles
+    path = "./fixture/game_teams_dummy15.csv"
+    game_team_manager = GameTeamsManager.new(path)
+
+    games_in_season = ['2012030221', '2012030222', '2012030223']
+
+    assert_equal "3", game_team_manager.fewest_tackles(games_in_season)
+  end
+
   def test_get_team_tackle_hash
     path = "./fixture/game_teams_dummy15.csv"
     game_team_manager = GameTeamsManager.new(path)
@@ -59,6 +77,24 @@ class GameTeamsManagerTest < Minitest::Test
     assert_equal 87, test["6"]
   end
 
+  def test_most_accurate_team
+    path = "./fixture/game_teams_dummy15.csv"
+    game_team_manager = GameTeamsManager.new(path)
+
+    games_in_season = ['2012030221', '2012030222', '2012030223']
+
+    assert_equal "6", game_team_manager.most_accurate_team(games_in_season)
+  end
+
+  def test_least_accurate_team
+    path = "./fixture/game_teams_dummy15.csv"
+    game_team_manager = GameTeamsManager.new(path)
+
+    games_in_season = ['2012030221', '2012030222', '2012030223']
+
+    assert_equal "3", game_team_manager.least_accurate_team(games_in_season)
+  end
+
   def test_score_shots_by_team
     path = "./fixture/game_teams_dummy15.csv"
     game_team_manager = GameTeamsManager.new(path)
@@ -67,6 +103,16 @@ class GameTeamsManagerTest < Minitest::Test
 
     assert_equal [4, 17], game_team_manager.score_and_shots_by_team(game_ids)["3"]
     assert_equal [6, 20], game_team_manager.score_and_shots_by_team(game_ids)["6"]
+  end
+
+  def test_create_coach_hash
+    path = "./fixture/game_teams_dummy15.csv"
+    game_team_manager = GameTeamsManager.new(path)
+
+    games_in_season = ['2012030221', '2012030222', '2012030223']
+    coach_hash = {"John Tortorella"=>[0, 3], "Claude Julien"=>[3, 3]}
+
+    assert_equal coach_hash, game_team_manager.create_coach_hash(games_in_season)
   end
 
   def test_create_ratio_hash
@@ -95,6 +141,16 @@ class GameTeamsManagerTest < Minitest::Test
     game_ids = ["2012030221", "2012030222"]
 
     assert_equal "John Tortorella", game_team_manager.worst_coach(game_ids)
+  end
+
+  def test_get_hash_of_rival_teams
+    path = "./fixture/game_teams_dummy15.csv"
+    game_team_manager = GameTeamsManager.new(path)
+
+    team_ids = '6'
+    rival_hash = {"3"=>[0, 5], "5"=>[0, 2]}
+
+    assert_equal rival_hash, game_team_manager.get_hash_of_rival_teams(team_ids)
   end
 
   def test_best_offense_dummy_file
