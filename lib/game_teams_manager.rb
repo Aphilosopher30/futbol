@@ -12,16 +12,6 @@ class GameTeamsManager
     @game_teams = generate_list(data_path, GameTeam)
   end
 
-  def most_tackles(season)
-    tackle_hash = get_team_tackle_hash(season)
-    tackle_hash.key(tackle_hash.values.max)
-  end
-
-  def fewest_tackles(season)
-    tackle_hash = get_team_tackle_hash(season)
-    tackle_hash.key(tackle_hash.values.min)
-  end
-
   def get_team_tackle_hash(season_games_ids)
      team_tackles_totals = Hash.new(0)
     @game_teams.each do |game_team|
@@ -33,7 +23,7 @@ class GameTeamsManager
   end
 
   def score_and_shots_by_team(season_games_ids)
-    accuracy = Hash.new { |accuracy, key| accuracy[key] = [0,0] }
+    accuracy = Hash.new { |hash, key| hash[key] = [0,0] }
     @game_teams.each do |game_team|
       if season_games_ids.include?(game_team.game_id)
         accuracy[game_team.team_id][0] += game_team.goals
@@ -53,7 +43,7 @@ class GameTeamsManager
   end
 
   def create_coach_hash(season_games)
-    coach_hash = Hash.new { |coach, team| coach[team] = [0,0] }
+    coach_hash = Hash.new { |hash, team| hash[team] = [0,0] }
     @game_teams.each do |game_team|
       if season_games.include?(game_team.game_id)
         coach_hash[game_team.head_coach][1] += 1

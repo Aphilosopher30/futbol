@@ -67,7 +67,7 @@ class GamesManager
   end
 
   def best_season(team_id)
-    rando = get_season_results(team_id).max_by do |key, value|
+    get_season_results(team_id).max_by do |key, value|
       value.count('WIN').to_f / value.size
     end.first
   end
@@ -79,8 +79,7 @@ class GamesManager
   end
 
   def average_win_percentage(team_id)
-    wins = 0
-    all = 0
+    wins = all = 0
     get_season_results(team_id).each do |key, value|
       wins += value.count("WIN")
       all += value.count
@@ -98,7 +97,7 @@ class GamesManager
   end
 
   def most_goals_scored(team_id)
-    get_goals_scored(team_id).max_by { |score|score }
+    get_goals_scored(team_id).max_by { |score| score }
   end
 
   def fewest_goals_scored(team_id)
@@ -106,43 +105,45 @@ class GamesManager
   end
 
   def get_season_games(season)
-    season_games = @games.find_all { |game| game.season == season }
-    season_games.map { |game| game.game_id }
+    @games.find_all {|game| game.season == season}.map {|game| game.game_id}
   end
 
   def total_home_goals
-    home_goals = games.map { |game| [game.home_team_id, game.home_goals] }
-    sum_values(home_goals)
+    sum_values(games.map {|game| [game.home_team_id, game.home_goals] })
   end
 
   def total_away_goals
-    away_goals = games.map { |game| [game.away_team_id, game.away_goals] }
-    sum_values(away_goals)
+    sum_values(games.map {|game| [game.away_team_id, game.away_goals] })
   end
 
   def total_home_games
-    team_home_games = games.map { |game| [game.home_team_id, 1] }
-    sum_values(team_home_games)
+    sum_values(games.map {|game| [game.home_team_id, 1] })
   end
 
   def total_away_games
-    team_away_games = games.map { |game| [game.away_team_id, 1] }
-    sum_values(team_away_games)
+    sum_values(games.map {|game| [game.away_team_id, 1] })
+  end
+
+  def min_max_average_hash(hash_1, hash_2, index)
+    averages = hash_1.merge(hash_2) do |key, hash_1_value, hash_2_value|
+      get_percentage(hash_1_value, hash_2_value)
+    end
+    averages.minmax_by {|team_id, average| average}[index].first
   end
 
   def highest_scoring_visitor
-    max_average_hash_values(total_away_goals, total_away_games)
+    min_max_average_hash(total_away_goals, total_away_games, 1)
   end
 
   def lowest_scoring_visitor
-    min_average_hash_values(total_away_goals, total_away_games)
+    min_max_average_hash(total_away_goals, total_away_games, 0)
   end
 
   def highest_scoring_home
-    max_average_hash_values(total_home_goals, total_home_games)
+    min_max_average_hash(total_home_goals, total_home_games, 1)
   end
 
   def lowest_scoring_home
-    min_average_hash_values(total_home_goals, total_home_games)
+    min_max_average_hash(total_home_goals, total_home_games, 0)
   end
 end
