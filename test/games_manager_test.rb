@@ -130,6 +130,15 @@ class GameManagerTest < Minitest::Test
     assert_equal expected, game_manager.average_goals_by_season
   end
 
+  def test_get_season_results
+    path = "./fixture/games_dummy15.csv"
+    game_manager = GamesManager.new(path)
+
+    expected = {"20122013"=>["WIN", "WIN", "WIN", "WIN", "WIN", "WIN", "WIN", "WIN", "WIN"]}
+
+    assert_equal expected, game_manager.get_season_results("6")
+  end
+
   def test_best_season
     path = "./data/games.csv"
     game_manager = GamesManager.new(path)
@@ -150,6 +159,14 @@ class GameManagerTest < Minitest::Test
     game_manager = GamesManager.new(path)
 
     assert_equal 0.49, game_manager.average_win_percentage('6')
+  end
+
+  def test_get_goals_scored
+    path = "./fixture/games_dummy15.csv"
+    game_manager = GamesManager.new(path)
+
+    expected = [3, 3, 2, 3, 3, 3, 4, 2, 1]
+    assert_equal expected, game_manager.get_goals_scored("6")
   end
 
   def test_most_goals_scored_full_file
@@ -254,16 +271,6 @@ class GameManagerTest < Minitest::Test
     assert_equal "27", game_manager.lowest_scoring_visitor
   end
 
-  def test_sum_values
-    path = "./data/games.csv"
-    game_manager = GamesManager.new(path)
-
-    key_value_arr = [[1, 1], [2, 2]]
-    expected = {1 => 1, 2 => 2}
-
-    assert_equal expected, game_manager.sum_values(key_value_arr)
-  end
-
   def test_min_max_average_hash
     path = "./data/games.csv"
     game_manager = GamesManager.new(path)
@@ -280,12 +287,5 @@ class GameManagerTest < Minitest::Test
 
     assert_equal "27", game_manager.min_max_average_hash(hash_1, hash_2, min = 0)
     assert_equal "22", game_manager.min_max_average_hash(hash_1, hash_2, max = 1)
-  end
-
-  def test_get_percentage_rounded_hundreth
-    path = "./data/games.csv"
-    game_manager = GamesManager.new(path)
-
-    assert_equal 0.31, game_manager.get_percentage(5, 16)
   end
 end

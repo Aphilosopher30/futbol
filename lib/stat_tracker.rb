@@ -17,7 +17,7 @@ class StatTracker
 
     StatTracker.new(games_path, teams_path, game_teams_path)
   end
-  ####### Game Stats ########
+
   def highest_total_score
     @games.highest_total_score
   end
@@ -49,7 +49,7 @@ class StatTracker
   def average_goals_by_season
     @games.average_goals_by_season
   end
-  ###### Team Stats #########
+
   def team_info(team_id)
     @teams.team_info(team_id)
   end
@@ -83,7 +83,7 @@ class StatTracker
     favorite_opponent = @game_teams.favorite_opponent(team_id)
     @teams.get_team_name(favorite_opponent)
   end
-  ###### League Stats #######
+
   def count_of_teams
     @teams.count_of_teams
   end
@@ -111,7 +111,7 @@ class StatTracker
   def lowest_scoring_visitor
     @teams.get_team_name(@games.lowest_scoring_visitor)
   end
-  ###### Season Stats #######
+
   def most_tackles(season)
     season_games = @games.get_season_games(season)
     tackle_hash = @game_teams.get_team_tackle_hash(season_games)
