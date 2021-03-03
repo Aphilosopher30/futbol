@@ -20,6 +20,33 @@ class GameManagerTest < Minitest::Test
     assert_instance_of Game, game_manager.games[-1]
   end
 
+  def test_readable_generate_list
+    path = "./fixture/games_dummy15.csv"
+    game_manager = GamesManager.new(path)
+
+    assert_equal Array, game_manager.games.class
+  end
+
+  def test_mathable_get_percentage
+    path = "./fixture/games_dummy15.csv"
+    game_manager = GamesManager.new(path)
+
+    numerator = 1
+    denominator = 4
+
+    assert_equal 0.25, game_manager.get_percentage(numerator, denominator)
+  end
+
+  def test_mathable_sum_values
+    path = "./fixture/games_dummy15.csv"
+    game_manager = GamesManager.new(path)
+
+    key_value_arr = [[1, 1], [1, 3], [1, 5], [2, 2], [2, 1]]
+    expected = {1 => 9, 2 => 3}
+
+    assert_equal expected, game_manager.sum_values(key_value_arr)
+  end
+
   def test_highest_total_score_dummy_file
     path = "./fixture/games_dummy15.csv"
     game_manager = GamesManager.new(path)

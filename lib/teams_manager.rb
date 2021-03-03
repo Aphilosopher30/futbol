@@ -1,19 +1,12 @@
+require_relative './readable'
 require_relative './team'
-require 'CSV'
 
 class TeamsManager
+  include Readable
   attr_reader :teams
 
   def initialize(data_path)
-    @teams = generate_list(data_path)
-  end
-
-  def generate_list(data_path)
-    list_of_data = []
-    CSV.foreach(data_path, headers: true, header_converters: :symbol) do |row|
-      list_of_data << Team.new(row)
-    end
-    list_of_data
+    @teams = generate_list(data_path, Team)
   end
 
   def count_of_teams
@@ -33,10 +26,10 @@ class TeamsManager
       team.team_id == team_id
     end
 
-    info = { "team_id" => desired_team.team_id,
-             "franchise_id" => desired_team.franchise_id,
-             "team_name" => desired_team.team_name,
-             "abbreviation" => desired_team.abbreviation,
-             "link" => desired_team.link}
+     { "team_id" => desired_team.team_id,
+       "franchise_id" => desired_team.franchise_id,
+       "team_name" => desired_team.team_name,
+       "abbreviation" => desired_team.abbreviation,
+       "link" => desired_team.link}
   end
 end
