@@ -1,7 +1,6 @@
 require_relative './readable'
 require_relative './mathable'
 require_relative './game_team'
-require 'CSV'
 
 class GameTeamsManager
   include Readable # not tested

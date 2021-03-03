@@ -1,7 +1,7 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/lib/game_team.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/lib/game_team.rb": {
         "lines": [
           1,
           1,
@@ -24,7 +24,7 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/test/game_teams_manager_test.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/test/game_teams_manager_test.rb": {
         "lines": [
           1,
           1,
@@ -164,9 +164,8 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/lib/game_teams_manager.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/lib/game_teams_manager.rb": {
         "lines": [
-          1,
           1,
           1,
           1,
@@ -300,20 +299,20 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/lib/readable.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/lib/readable.rb": {
         "lines": [
           1,
           1,
-          104,
-          104,
-          306086,
+          141,
+          141,
+          306794,
           null,
-          104,
+          141,
           null,
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/lib/mathable.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/lib/mathable.rb": {
         "lines": [
           1,
           1,
@@ -342,7 +341,7 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/test/game_test.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/test/game_test.rb": {
         "lines": [
           1,
           1,
@@ -394,7 +393,7 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/lib/game.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/lib/game.rb": {
         "lines": [
           1,
           1,
@@ -440,7 +439,7 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/test/games_manager_test.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/test/games_manager_test.rb": {
         "lines": [
           1,
           1,
@@ -700,7 +699,7 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/lib/games_manager.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/lib/games_manager.rb": {
         "lines": [
           1,
           1,
@@ -852,7 +851,7 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/test/stat_tracker_test.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/test/stat_tracker_test.rb": {
         "lines": [
           1,
           1,
@@ -1166,9 +1165,8 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/lib/stat_tracker.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/lib/stat_tracker.rb": {
         "lines": [
-          1,
           1,
           1,
           1,
@@ -1318,23 +1316,16 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/lib/teams_manager.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/lib/teams_manager.rb": {
         "lines": [
           1,
           1,
           null,
           1,
           1,
+          1,
           null,
           1,
-          37,
-          null,
-          null,
-          1,
-          37,
-          37,
-          708,
-          null,
           37,
           null,
           null,
@@ -1364,7 +1355,7 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/lib/team.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/lib/team.rb": {
         "lines": [
           1,
           1,
@@ -1380,7 +1371,7 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/test/team_test.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/test/team_test.rb": {
         "lines": [
           1,
           1,
@@ -1410,7 +1401,7 @@
           null
         ]
       },
-      "/Users/aliciahenzler/turing/mod1/projects/futbol/test/teams_manager_test.rb": {
+      "/Users/mcg/turing/1module/projects/futbol/test/teams_manager_test.rb": {
         "lines": [
           1,
           1,
@@ -1469,6 +1460,6 @@
         ]
       }
     },
-    "timestamp": 1614794831
+    "timestamp": 1614796174
   }
 }
